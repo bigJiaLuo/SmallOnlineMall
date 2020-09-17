@@ -1,0 +1,16 @@
+------- 本地部署
+1. 修改 src/main/resource/config/jdbc/mysqlJdbc.properties 配置文件，改为自己本地的mysql配置，访问的数据库不变
+2.打开mysql，执行 online_shop_ssm_18软件03_15a522.sql文件
+3.将war包 放到 Tomcat服务器上的   （自己的tomcat服务器路径）:\tomcat-8.5.31-windows-64-apache\apache-tomcat-8.5.31\webapps\  目录下
+3.1  war包路径（online_shop_ssm\target\online_shop_ssm.war）
+4.启动tomcat 服务器， 浏览器输入 http:localhost:8080/online_shop_ssm/
+5.项目启动完成
+
+
+----idea 部署
+
+1.idea打开 online_shop_ssm文件夹中的 pom.xml,选择 open exists Object(注意配置好maven，和tomcat)
+2.等待 导入所有maven所需jar包
+3.点击右上角 Tomcat 绿色箭头
+4.访问 http:localhost:8080/online_shop_ssm/
+

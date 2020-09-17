@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+<!--    配置 Spring事务管理器-->
+
+    <!-- spring中基于注解 的声明式事务控制配置步骤
+        1、配置事务管理器
+        2、开启spring对注解事务的支持
+        3、在需要事务支持的地方使用@Transactional注解
+
+
+     -->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 切面 -->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="fooServiceMethods"-->
+<!--                      expression="execution(* cn.fjl.service.*.*(..))" />-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceMethods" />-->
+<!--    </aop:config>-->
+<!--    &lt;!&ndash;通知 &ndash;&gt;-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="find*" read-only="true" />-->
+<!--            <tx:method name="*" propagation="REQUIRED" read-only="false" />-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+<!--&lt;!&ndash;    必须加 上 这个使用基于类的 （CGLIB）进行代理的方式-->
+<!--是否要创建基于类的(CGLIB)代理?默认情况下，-->
+<!--将创建标准的基于接口的Java代理-->
+<!--&ndash;&gt;-->
+<!--    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>-->
+
+
+<!--    开启 spring 事务控制，注解支持-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"></tx:annotation-driven>
+</beans>
